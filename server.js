@@ -1,14 +1,13 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-
-const port = 3000; // Anda dapat mengganti nomor port sesuai dengan keinginan Anda
+const port = 3000;
 
 // parse application/json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// panggil routes
+// Panggil routes
 const routes = require('./routes');
 routes(app);
 

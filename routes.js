@@ -1,8 +1,12 @@
-'use strict';
+"use strict";
 
-module.exports = function(app) {
-    var jsonku = require('./controller');
+module.exports = function (app) {
+  const jsonku = require("./controller");
 
-    app.route('/')  
-        .get(jsonku.index);
+  app.route("/").get(jsonku.index);
+
+  app.route("/tampil").get(jsonku.getAllData);
+
+  // Menampilkan data berdasarkan ID
+  app.route("/tampil/:id").get(jsonku.getDataById);
 };

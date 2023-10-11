@@ -54,3 +54,21 @@ exports.addData = function (req, res) {
         }
     });
 }
+
+// mengubah data
+
+exports.updateData = function (req, res) {
+    const id = req.body.id_mahasiswa;
+    const nim = req.body.nim;
+    const nama = req.body.nama;
+    const jurusan = req.body.jurusan;
+
+    connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?', [nim, nama, jurusan, id], function (error, result) {
+        if (error) {
+            console.error('Error executing query: ' + error);
+            response.error("Terjadi kesalahan saat mengupdate data", res);
+        } else {
+            response.oke("Data berhasil diupdate", result, res);
+        }
+    });
+}

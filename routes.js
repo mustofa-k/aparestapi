@@ -12,4 +12,7 @@ module.exports = function (app) {
 
   // tambah data 
   app.route("/tambah").post(jsonku.addData);
-};
+  
+  // update data 
+  app.route("/update").put(jsonku.updateData);
+}

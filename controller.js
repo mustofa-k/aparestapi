@@ -35,3 +35,22 @@ exports.getDataById = function (req, res) {
     }
   });
 };
+
+
+// menambah data
+
+exports.addData = function (req, res) {
+        const nim = req.body.nim 
+        const nama = req.body.nama
+        const jurusan = req.body.jurusan
+   
+
+    connection.query("INSERT INTO mahasiswa (nim,nama,jurusan) VALUES(?,?,?)",[nim,nama,jurusan], function (error, result) {
+        if (error) {
+            console.error('Error executing query: ' + error);
+            response.error("Terjadi kesalahan saat menambahkan data", res);
+        } else {
+            response.oke("Data berhasil ditambahkan", result, res);
+        }
+    });
+}

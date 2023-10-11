@@ -9,4 +9,7 @@ module.exports = function (app) {
 
   // Menampilkan data berdasarkan ID
   app.route("/tampil/:id").get(jsonku.getDataById);
+
+  // tambah data 
+  app.route("/tambah").post(jsonku.addData);
 };

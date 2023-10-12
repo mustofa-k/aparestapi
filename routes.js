@@ -15,4 +15,11 @@ module.exports = function (app) {
   
   // update data 
   app.route("/update").put(jsonku.updateData);
+
+  // deleteData 
+  app.route("/delete").delete(jsonku.deleteData);
+
+  // tampil data matakuliah group
+  app.route("/tampilmatakuliah").get(jsonku.getMatakuliahGroup);
+
 }

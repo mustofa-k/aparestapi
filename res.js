@@ -18,3 +18,27 @@ exports.error = function(message, res) {
 
     res.status(500).json(response);
 };
+
+exports.okNested = function (message, values, res) { // Menambahkan parameter 'message'
+    const hasil = values.reduce((akumulasi, item) => {
+        if (akumulasi[item.nama]) {
+            const group = akumulasi[item.nama];
+            if (Array.isArray(group.matakuliah)) {
+                group.matakuliah.push(item.matakuliah);
+            } else {
+                group.matakuliah = [group.matakuliah, item.matakuliah];
+            }
+        } else {
+            akumulasi[item.nama] = item;
+        }
+        return akumulasi;
+    }, {});
+    var response = {
+        'status': 200,
+        'message': message, // Menggunakan parameter 'message'
+        'data': hasil
+    };
+
+    res.json(response); // Mengganti 'data' menjadi 'response'
+    res.end();
+};

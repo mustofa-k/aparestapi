@@ -1,6 +1,6 @@
 'use strict';
 
-exports.oke = function(message, data, res) {
+exports.oke = function (message, data, res) {
     var response = {
         'status': 200,
         'message': message,
@@ -10,7 +10,7 @@ exports.oke = function(message, data, res) {
     res.status(200).json(response);
 };
 
-exports.error = function(message, res) {
+exports.error = function (message, res) {
     var response = {
         'status': 500,
         'message': message
@@ -19,7 +19,7 @@ exports.error = function(message, res) {
     res.status(500).json(response);
 };
 
-exports.okNested = function (message, values, res) { // Menambahkan parameter 'message'
+exports.okNested = function (message, values, res) {
     const hasil = values.reduce((akumulasi, item) => {
         if (akumulasi[item.nama]) {
             const group = akumulasi[item.nama];
@@ -35,10 +35,10 @@ exports.okNested = function (message, values, res) { // Menambahkan parameter 'm
     }, {});
     var response = {
         'status': 200,
-        'message': message, // Menggunakan parameter 'message'
+        'message': message,
         'data': hasil
     };
 
-    res.json(response); // Mengganti 'data' menjadi 'response'
+    res.json(response);
     res.end();
 };
